@@ -2,6 +2,7 @@ package com.zhaijiong.stock;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Stopwatch;
+import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Queues;
 import org.jsoup.Jsoup;
@@ -44,7 +45,7 @@ public class SimpleFetcher {
             System.out.println("创建文件失败");
         }
 
-        executor = Executors.newFixedThreadPool(20);
+        executor = Executors.newFixedThreadPool(50);
         tasks = Queues.newConcurrentLinkedQueue();
     }
 
@@ -56,7 +57,10 @@ public class SimpleFetcher {
 
             while (totalTask != successed.get()) {
                 String stock = tasks.poll();
-                download(stock);
+                if(!Strings.isNullOrEmpty(stock)){
+                    download(stock);
+                }
+                Thread.sleep(50);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,7 +120,7 @@ public class SimpleFetcher {
 
     public void close() throws InterruptedException {
         System.out.println("程序停止中");
-        while (executor.isShutdown()) {
+        while (!executor.isShutdown()) {
             executor.shutdown();
             Thread.sleep(1000);
             System.out.print(".");
