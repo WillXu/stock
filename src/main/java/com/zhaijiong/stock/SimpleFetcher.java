@@ -67,7 +67,7 @@ public class SimpleFetcher {
         }
     }
 
-    private void download(final String stock) throws MalformedURLException {
+    public void download(final String stock) throws MalformedURLException {
         Runnable downloader = new Runnable() {
             @Override
             public void run() {
@@ -78,6 +78,10 @@ public class SimpleFetcher {
                         String filePath = Joiner.on("_").join(BASEDIR, stock, fileName);
 
                         URLConnection conn = url.openConnection();
+                        conn.setRequestProperty("User-Agent","\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:29.0) Gecko/20100101 Firefox/29.0\"");
+                        conn.setRequestProperty("Referer","http://stockpage.10jqka.com.cn/"+stock+"/finance/");
+                        conn.setRequestProperty("Cookies","historystock="+stock+"; spversion=20130314");
+                        conn.setRequestProperty("X-Requested-With","XMLHttpRequest");
                         conn.setConnectTimeout(30000);
                         conn.setReadTimeout(30000);
                         InputStream inStream = conn.getInputStream();
@@ -94,6 +98,7 @@ public class SimpleFetcher {
                 } catch (Exception e) {
                     tasks.add(stock);
                     System.out.println("股票资料获取失败:" + stock);
+                    e.printStackTrace();
                 }
             }
         };
@@ -131,7 +136,8 @@ public class SimpleFetcher {
         Stopwatch watch = Stopwatch.createStarted();
         SimpleFetcher fetcher = new SimpleFetcher();
         fetcher.init();
-        fetcher.downloadStockFile();
+        fetcher.download("600360");
+//        fetcher.downloadStockFile();
         fetcher.close();
         System.out.println(watch.elapsed(TimeUnit.MILLISECONDS));
     }
