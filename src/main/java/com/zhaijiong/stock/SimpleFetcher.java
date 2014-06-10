@@ -28,7 +28,6 @@ public class SimpleFetcher {
             {"debtreport.xls",  //资产负债表
                     "benefitreport.xls", //利润表
                     "cashreport.xls"}; // 现金流量表
-    public static final String STOCKPAGE_10JQKA_COM_CN = "stockpage.10jqka.com.cn";
 
     private ExecutorService executor;
     private ConcurrentLinkedQueue<String> tasks;
