@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by xuqi.xq on 2014/6/8.
  */
-public class ExcelReader {
+public class ExcelReader{
     private Sheet sheet;
     private Workbook workbook;
 
@@ -22,7 +22,7 @@ public class ExcelReader {
         sheet = workbook.getSheet(sheetNum);
     }
 
-    public static List<Cell> readline(Sheet sheet ,int lineNum){
+    public List<Cell> readline(int lineNum){
         List<Cell> list = Lists.<Cell>newArrayList();
         for(int i=0;i<sheet.getColumns();i++){
             Cell cell = sheet.getCell(i,lineNum);
@@ -34,8 +34,8 @@ public class ExcelReader {
         return list;
     }
 
-    public static List<Cell> readHeader(Sheet sheet){
-        return readline(sheet,0);
+    public List<Cell> readHeader(Sheet sheet){
+        return readline(0);
     }
 
     public static void printLine(List<Cell> line){
@@ -50,9 +50,9 @@ public class ExcelReader {
 
         for(int i=1;i<reader.sheet.getRows();i++){
             System.out.println("line:"+i);
-            printLine(readHeader(reader.sheet));
+            printLine(reader.readHeader(reader.sheet));
             System.out.println("");
-            List<Cell> readline = reader.readline(reader.sheet,i);
+            List<Cell> readline = reader.readline(i);
             printLine(readline);
         }
     }

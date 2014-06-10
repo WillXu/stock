@@ -28,6 +28,7 @@ public class SimpleFetcher {
             {"debtreport.xls",  //资产负债表
                     "benefitreport.xls", //利润表
                     "cashreport.xls"}; // 现金流量表
+    public static final String STOCKPAGE_10JQKA_COM_CN = "stockpage.10jqka.com.cn";
 
     private ExecutorService executor;
     private ConcurrentLinkedQueue<String> tasks;
@@ -78,10 +79,18 @@ public class SimpleFetcher {
                         String filePath = Joiner.on("_").join(BASEDIR, stock, fileName);
 
                         URLConnection conn = url.openConnection();
-                        conn.setRequestProperty("User-Agent","\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:29.0) Gecko/20100101 Firefox/29.0\"");
+                        conn.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36");
                         conn.setRequestProperty("Referer","http://stockpage.10jqka.com.cn/"+stock+"/finance/");
-                        conn.setRequestProperty("Cookies","historystock="+stock+"; spversion=20130314");
-                        conn.setRequestProperty("X-Requested-With","XMLHttpRequest");
+//                        conn.setRequestProperty("Referer","http://stockpage.10jqka.com.cn/"+stock);
+                        conn.setRequestProperty("Cookies","uid=2ktMyVODByARVh0iA2zcAg==; historystock="+stock+"; spversion=20130314");
+//                        conn.setRequestProperty("Cookies","BAIDU_CLB_REFER=http%3A%2F%2Fwww.baidu.com%2Fs%3Fie%3DUTF-8%26wd%3D%25E5%2590%258C%25E8%258A%25B1%25E9%25A1%25BA; spversion=20130314; __utma=156575163.1007340261.1401095968.1401107726.1402399647.3; __utmb=156575163.1.10.1402399647; __utmc=156575163; __utmz=156575163.1401095968.1.1.utmcsr=baidu|utmccn=(organic)|utmcmd=organic|utmctr=%E5%90%8C%E8%8A%B1%E9%A1%BA; historystock="+ stock +"%7C*%7C002152%7C*%7C002409");
+//                        conn.setRequestProperty("X-Requested-With","XMLHttpRequest");
+//                        conn.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+//                        conn.setRequestProperty("Accept-Encoding", "gzip,deflate,sdch");
+//                        conn.setRequestProperty("Accept-Language", "zh,zh-CN;q=0.8,en-US;q=0.6,en;q=0.4");
+//                        conn.setRequestProperty("Cache-Control", "max-age=0");
+//                        conn.setRequestProperty("Connection", "keep-alive");
+//                        conn.setRequestProperty("Host", "stockpage.10jqka.com.cn");
                         conn.setConnectTimeout(30000);
                         conn.setReadTimeout(30000);
                         InputStream inStream = conn.getInputStream();
@@ -136,8 +145,7 @@ public class SimpleFetcher {
         Stopwatch watch = Stopwatch.createStarted();
         SimpleFetcher fetcher = new SimpleFetcher();
         fetcher.init();
-        fetcher.download("600360");
-//        fetcher.downloadStockFile();
+        fetcher.downloadStockFile();
         fetcher.close();
         System.out.println(watch.elapsed(TimeUnit.MILLISECONDS));
     }
