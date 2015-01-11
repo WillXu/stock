@@ -7,13 +7,17 @@ MACD称为指数平滑异同平均线，是从双指数移动平均线发展而�
 ------
 
 1. 12日EMA(移动平均值)：
-   EMA12 = 前一日EMA12 X 11/13 + 今日收盘 X 2/13
+
+	EMA12 = 前一日EMA12 X 11/13 + 今日收盘 X 2/13
 2. 26日EMA(移动平均值)：
-   EMA26 = 前一日EMA26 X 25/27 + 今日收盘 X 2/27
+
+	EMA26 = 前一日EMA26 X 25/27 + 今日收盘 X 2/27
 3. 差离值（DIF，同花顺中macd中的白线）的计算：
-   DIF = EMA12 - EMA26
+
+	DIF = EMA12 - EMA26
 4. 根据差离值计算其9日的EMA，即离差平均值，是所求的MACD值
-   DEA = （前一日DEA X 8/10 + 今日DIF X 2/10）
+
+	DEA = （前一日DEA X 8/10 + 今日DIF X 2/10）
 5. 计算出的DIF与DEA为正或负值，因而形成在0轴上下移动的两条快速与慢速线。为了方便判断，用DIF减去DEA，用以绘制柱状图。
 
 缺点
@@ -44,7 +48,43 @@ MACD称为指数平滑异同平均线，是从双指数移动平均线发展而�
 
 实战技术
 ------
-总结中...
+![](http://www.net767.com/gupiao/UploadFiles_2010/200903/2009032414121672.gif)
+
+![](http://www.net767.com/gupiao/UploadFiles_2010/201004/2010042017300828.gif)
+
+![](http://www.net767.com/gupiao/UploadFiles_2010/201004/2010042017302017.gif)
+
+![](http://www.net767.com/gupiao/UploadFiles_2010/201004/2010042017310879.gif)
+
+![](http://www.net767.com/gupiao/UploadFiles_2010/201004/2010042017313352.gif)
+
+![](http://www.net767.com/gupiao/UploadFiles_2010/201004/2010042017314927.gif)
+
+![](http://www.net767.com/gupiao/UploadFiles_2010/201004/2010042017322379.gif)
+
+![](http://www.net767.com/gupiao/UploadFiles_2010/200903/2009031018390175.gif)
+
+![](http://www.net767.com/gupiao/UploadFiles_2010/200903/2009031018383283.gif)
+
+### 二次金叉
+![](http://www.net767.com/book/UploadFiles_8829/201404/2014040113314370.gif)
+
+1. 第二次金叉离第一次金叉距离越近越好；
+2. MACD第二次金叉的位置以高于第一次金叉为好；
+3. MACD第二次金叉时结合K线形态上的攻击形态研判（如：多方炮、平台突破等）,则可增加成功率。
+
+最佳买点
+1. 激进型玩家,可根据量能配合情况,于MACD第二次金叉的当天介入；
+2. 稳健型玩家,可于金叉的次日,寻找时机介入。
+
+案例
+
+![](http://www.net767.com/book/UploadFiles_8829/201404/2014040113315624.gif)
+![](http://www.net767.com/book/UploadFiles_8829/201404/2014040113321373.gif)
+![](http://www.net767.com/book/UploadFiles_8829/201404/2014040113322753.gif)
+
+这三个图的横盘震荡macd回归零轴
+
 
 参考
 ------
